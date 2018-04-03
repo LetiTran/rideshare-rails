@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'user_interfaces', to: 'user_interfaces#index', as: 'user_interfaces'
+
   get 'passengers', to: 'passengers#index', as: 'passengers'
 
   get 'passengers/new', to: 'passengers#new', as: 'new_passenger'
