@@ -19,4 +19,7 @@ class DriversController < ApplicationController
 
   def destroy
   end
+
+  def update_status
+  end
 end
