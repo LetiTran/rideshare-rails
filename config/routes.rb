@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   patch 'trips/:id', to: 'trips#update'
 
-  delete 'trips/:id', to: 'trips#destroy'
+  delete 'trips/:id', to: 'trips#destroy', as: 'delete_trip'
 
   root 'user_interfaces#index'
 
