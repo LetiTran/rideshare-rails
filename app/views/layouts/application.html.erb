@@ -8,6 +8,14 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <head>
+    <ul>
+      <li>Rideshare on Rails!</li>
+      <li><%= link_to "Drivers", drivers_path%></li>
+      <li><%= link_to "Passengers", passengers_path%></li>
+    </ul>
+  </head>
+
   <body>
     <%= yield %>
   </body>

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   patch 'drivers/:id', to: 'drivers#update'
 
-  delete 'drivers/:id', to: 'drivers#destroy'
+  delete 'drivers/:id', to: 'drivers#destroy', as: 'delete_driver'
 
   patch 'drivers/:id/status', to: 'drivers#status', as: 'update_status'
 
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   delete 'trips/:id', to: 'trips#destroy'
 
-  # root '#index'
+  root 'user_interfaces#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,2 +1,9 @@
-<h1>Drivers#index</h1>
-<p>Find me in app/views/drivers/index.html.erb</p>
+<h1>Rideshare Drivers</h1>
+
+<% @drivers.each do |driver| %>
+
+  <ul >
+    <li><%= driver.name %><%= link_to "Edit", edit_driver_path(driver[:id]) %> <%= link_to "Delete", delete_driver_path(driver[:id]), method: :delete %></li>
+  </ul>
+
+<% end %>
