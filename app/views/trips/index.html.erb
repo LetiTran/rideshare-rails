@@ -1,2 +1,17 @@
-<h1>Trips#index</h1>
-<p>Find me in app/views/trips/index.html.erb</p>
+<h1>Rideshare Passengers</h1>
+
+<ul>
+  <li>TRIP ID</li>
+  <li>DRIVER ID</li>
+  <li>PASSANGER ID</li>
+</ul>
+
+<% @trips.each do |trip| %>
+
+<% driver = @drivers.find(trip.driver_id) %>
+<% passenger = @passengers.find(trip.passenger_id) %>
+  <ul >
+    <li>  <%= link_to trip.id, show_trip_path(trip[:id])%> <%= link_to driver.id, show_driver_path(driver[:id])%> <%= link_to passenger.id , show_passenger_path(passenger[:id])%> </li>
+  </ul>
+
+<% end %>
