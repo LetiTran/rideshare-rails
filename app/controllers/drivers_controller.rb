@@ -24,13 +24,15 @@ class DriversController < ApplicationController
   end
 
   def new
-    
+
   end
 
   def create
   end
 
   def edit
+    id = params[:id]
+    @driver = Driver.find(id)
   end
 
   def update

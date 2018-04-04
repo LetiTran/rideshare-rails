@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   get 'drivers/new', to: 'drivers#new', as: 'new_driver'
 
-  get 'drivers/:id', to: 'drivers#show', as: 'show_driver'
+  get 'drivers/:id', to: 'drivers#show', as: 'driver'
 
   post 'drivers/create', to: 'driver#create'
 

@@ -1,0 +1,37 @@
+<h2><%= page_title %></h2>
+<% if @driver.errors.any? %>
+  <ul class="errors">
+    <% @driver.errors.each do |field, message| %>
+      <li>
+        <strong><%= field.capitalize %>: </strong><%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= form_for @driver do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :car %>
+  <%= f.text_field :car %>
+
+  <%= f.label :vin %>
+  <%= f.text_area :vin %>
+
+
+  <% if @driver.status == true %>
+    <%= f.label :status, "Online", :value => "true"  %>
+    <%= f.radio_button :status, true, :checked => true %>
+    <%= f.label :satus, "Offline", :value => "false" %>
+    <%= f.radio_button :status, false %>
+
+  <% else  %>
+    <%= f.label :status, "Online", :value => "true"  %>
+    <%= f.radio_button :status, true %>
+    <%= f.label :satus, "Offline", :value => "false" %>
+    <%= f.radio_button :status, false, :checked => true %>
+  <% end %>
+
+
+  <%= f.submit %>
+<% end %>
