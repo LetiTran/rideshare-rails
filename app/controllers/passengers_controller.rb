@@ -4,6 +4,14 @@ class PassengersController < ApplicationController
   end
 
   def show
+    id = params[:id]
+    @passenger = Passenger.find(id)
+
+    @total_paid = 0
+    @passenger.trips.each do |trip|
+      @total_paid += trip.cost
+    end
+
   end
 
   def new
