@@ -1,0 +1,16 @@
+<%= form_for @driver do |f| %>
+  <%= f.label "#{:status}:" %>
+  <% if @driver.status == true %>
+    <%= f.label :status, "Online", :value => "true"  %>
+    <%= f.radio_button :status, true, :checked => true %>
+    <%= f.label :satus, "Offline", :value => "false" %>
+    <%= f.radio_button :status, false %>
+
+  <% else  %>
+    <%= f.label :status, "Online", :value => "true"  %>
+    <%= f.radio_button :status, true %>
+    <%= f.label :satus, "Offline", :value => "false" %>
+    <%= f.radio_button :status, false, :checked => true %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

@@ -36,6 +36,16 @@ class DriversController < ApplicationController
   end
 
   def update
+    @driver = Driver.find_by(id: params[:id])
+    if !@driver.nil?
+      if @driver.update(driver_params)
+        redirect_to driver_path(@driver.id)
+      else
+        render :edit
+      end
+    else
+      redirect_to drivers_path
+    end
   end
 
   def destroy
@@ -44,5 +54,10 @@ class DriversController < ApplicationController
   def update_status
   end
 
+  private
+
+  def driver_params
+    return params.require(:driver).permit(:name, :car, :vin, :status)
+  end
 
 end

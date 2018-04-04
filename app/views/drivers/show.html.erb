@@ -2,7 +2,7 @@
 
 
 <section>
-  <%= link_to "GO ON-LINE/OFF-LINE", update_status_path(@driver[:id]), method: :patch%>
+  <%= render partial: "driver_status" %>
 </section>
 
 <section>
