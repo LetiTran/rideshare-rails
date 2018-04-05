@@ -1,2 +1,15 @@
-<h1>Trips#show</h1>
-<p>Find me in app/views/trips/show.html.erb</p>
+<h1>Trip <%= @trip.id %></h1>
+
+
+
+<section>
+  <p> Driver: <%= @driver %></p>
+  <p>Passenger: <%= @passenger %></p>
+  <p>Date: <%= @trip.date %></p>
+  <p>Cost: <%=  @trip.cost %></p>
+  <p>Rating: <%= @trip.rating %></p>
+</section>
+
+<ul >
+  <li>  <%= link_to "Edit", edit_trip_path(@trip[:id]) %>  <%= link_to "Delete", delete_trip_path(@trip[:id]), method: :delete %> </li>
+</ul>

@@ -11,4 +11,14 @@ class Trip < ApplicationRecord
     end
 
   end
+
+  def passenger_exist
+    passenger_id = self.passenger_id
+    if Passenger.exists?(id: passenger_id)
+      return true
+    else
+      return false
+    end
+
+  end
 end

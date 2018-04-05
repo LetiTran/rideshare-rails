@@ -13,7 +13,7 @@
 
 
   <ul >
-    <li>  <%= link_to trip.id, show_trip_path(trip[:id])%>
+    <li>  <%= link_to trip.id, trip_path(trip[:id])%>
       <% if trip.driver_exist %>
         <% driver = @drivers.find(trip.driver_id) %>
         <%= link_to driver.id, driver_path(driver[:id])%>
@@ -21,7 +21,14 @@
         <%= trip[:driver_id] %>
       <% end %>
 
-      <%= link_to passenger.id , show_passenger_path(passenger[:id])%> </li>
+      <% if trip.passenger_exist %>
+        <% passenger = @passengers.find(trip.passenger_id) %>
+        <%= link_to passenger.id, passenger_path(passenger[:id])%>
+      <% else %>
+        <%= trip[:passenger_id] %>
+      <% end %>
+
+    </li>
   </ul>
 
 <% end %>

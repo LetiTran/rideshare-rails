@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get 'passengers/new', to: 'passengers#new', as: 'new_passenger'
 
-  get 'passengers/:id', to: 'passengers#show', as: 'show_passenger'
+  get 'passengers/:id', to: 'passengers#show', as: 'passenger'
 
   post 'passengers/create', to: 'passenger#create'
 
@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   get 'trips/new', to: 'trips#new', as: 'new_trip'
 
-  get 'trips/:id', to: 'trips#show', as: 'show_trip'
+  get 'trips/:id', to: 'trips#show', as: 'trip'
 
   post 'trips/create', to: 'trip#create'
 
