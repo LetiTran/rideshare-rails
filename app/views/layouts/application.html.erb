@@ -8,15 +8,29 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <head>
-    <ul>
-      <li>Rideshare on Rails!</li>
-      <li><%= link_to "Drivers", drivers_path%></li>
-      <li><%= link_to "Add Driver", new_driver_path%></li>
-      <li><%= link_to "Passengers", passengers_path%></li>
-      <li><%= link_to "Add Passenger", new_passenger_path%></li>
-    </ul>
-  </head>
+  <header>
+    <nav class="menuContainer">
+
+      <h1>Rideshare on Rails!</h1>
+      <ul>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Manage Drivers</a>
+          <div class="dropdown-content">
+            <a href="drivers">See All Drivers</a>
+            <a href="drivers/new">Add Driver</a>
+          </div>
+        </li>
+
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="dropbtn">Manage Passengers</a>
+          <div class="dropdown-content">
+            <a href="passengers">See All Passengers</a>
+            <a href="passengers/new">Add Passenger</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
   <body>
     <%= yield %>
