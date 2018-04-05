@@ -14,16 +14,20 @@
 
   <ul >
     <li>  <%= link_to trip.id, trip_path(trip[:id])%>
+      <!-- use method from trip model to check to see if the driver has not been deleted -->
       <% if trip.driver_exist %>
         <% driver = @drivers.find(trip.driver_id) %>
         <%= link_to driver.id, driver_path(driver[:id])%>
+      <!-- if driver has been deleted, just print id number instead of creating a link -->
       <% else %>
         <%= trip[:driver_id] %>
       <% end %>
 
+      <!-- use method from trip model to check to see if the passenger has not been deleted -->
       <% if trip.passenger_exist %>
         <% passenger = @passengers.find(trip.passenger_id) %>
         <%= link_to passenger.id, passenger_path(passenger[:id])%>
+      <!-- if passenger has been deleted, just print id number instead of creating link -->
       <% else %>
         <%= trip[:passenger_id] %>
       <% end %>

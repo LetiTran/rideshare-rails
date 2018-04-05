@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get 'drivers/:id', to: 'drivers#show', as: 'driver'
 
-  post 'drivers', to: 'driver#create'
+  post 'drivers', to: 'drivers#create'
 
   get 'drivers/:id/edit', to: 'drivers#edit', as: 'edit_driver'
 

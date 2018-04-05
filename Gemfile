@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"

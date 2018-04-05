@@ -25,7 +25,7 @@
 
 <% passenger = trip.passenger %>
   <ul >
-    <li>  <%= link_to trip.id, show_trip_path(trip[:id])%> <%= trip.date %> <%= link_to passenger.id, passenger_path(passenger[:id])%> <%= trip.cost %> <%= trip.rating %> <%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", delete_trip_path(trip[:id]), method: :delete %> </li>
+    <li>  <%= link_to trip.id, trip_path(trip[:id])%> <%= trip.date %> <%= link_to passenger.id, passenger_path(passenger[:id])%> <%= trip.cost %> <%= trip.rating %> <%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", delete_trip_path(trip[:id]), method: :delete %> </li>
   </ul>
 
 <% end %>

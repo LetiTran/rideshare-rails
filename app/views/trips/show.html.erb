@@ -3,10 +3,10 @@
 
 
 <section>
-  <p> Driver: <%= @driver %></p>
+  <p>Driver: <%= @driver %></p>
   <p>Passenger: <%= @passenger %></p>
   <p>Date: <%= @trip.date %></p>
-  <p>Cost: <%=  @trip.cost %></p>
+  <p>Cost: <%= number_to_currency((@trip.cost.to_f)/100, precision: 2)%> </p>
   <p>Rating: <%= @trip.rating %></p>
 </section>
 
