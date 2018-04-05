@@ -16,16 +16,17 @@
         <li class="dropdown">
           <a href="javascript:void(0)" class="dropbtn">Manage Drivers</a>
           <div class="dropdown-content">
-            <a href="drivers">See All Drivers</a>
-            <a href="drivers/new">Add Driver</a>
+            <%= link_to "See All Drivers", drivers_path %>
+            <%= link_to "Add Drivers", new_driver_path %>
           </div>
         </li>
 
         <li class="dropdown">
           <a href="javascript:void(0)" class="dropbtn">Manage Passengers</a>
           <div class="dropdown-content">
-            <a href="passengers">See All Passengers</a>
-            <a href="passengers/new">Add Passenger</a>
+
+            <%= link_to "See All Passengers", passengers_path %>
+            <%= link_to "Add Passengers", new_passenger_path %>
           </div>
         </li>
       </ul>
