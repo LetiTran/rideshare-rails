@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'passengers/:id', to: 'passengers#show', as: 'passenger'
 
-  post 'passengers/create', to: 'passenger#create'
+  post 'passengers', to: 'passenger#create'
 
   get 'passengers/:id/edit', to: 'passengers#edit', as: 'edit_passenger'
 
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get 'drivers/:id', to: 'drivers#show', as: 'driver'
 
-  post 'drivers/create', to: 'driver#create'
+  post 'drivers', to: 'driver#create'
 
   get 'drivers/:id/edit', to: 'drivers#edit', as: 'edit_driver'
 
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   get 'trips/:id', to: 'trips#show', as: 'trip'
 
-  post 'trips/create', to: 'trip#create'
+  post 'trips', to: 'trip#create'
 
   get 'trips/:id/edit', to: 'trips#edit', as: 'edit_trip'
 
