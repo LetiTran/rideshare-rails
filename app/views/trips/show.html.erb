@@ -11,5 +11,5 @@
 </section>
 
 <ul >
-  <li>  <%= link_to "Edit", edit_trip_path(@trip[:id]) %>  <%= link_to "Delete", delete_trip_path(@trip[:id]), method: :delete %> </li>
+  <li>  <%= link_to "Edit", edit_trip_path(@trip[:id]) %>  <%= link_to "Delete", trip_path(@trip[:id]), method: :delete %> </li>
 </ul>

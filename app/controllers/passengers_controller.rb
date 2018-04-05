@@ -12,6 +12,7 @@ class PassengersController < ApplicationController
       @total_paid += trip.cost
     end
 
+
   end
 
   def new
@@ -28,9 +29,21 @@ class PassengersController < ApplicationController
   end
 
   def edit
+    id = params[:id]
+    @passenger= Passenger.find(id)
   end
 
   def update
+    @passenger = Passenger.find_by(id: params[:id])
+    if !@passenger.nil?
+      if @passenger.update(passenger_params)
+        redirect_to passenger_path(@passenger.id)
+      else
+        render :edit
+      end
+    else
+      redirect_to passenger_path(params[:id])
+    end
   end
 
   def destroy
