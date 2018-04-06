@@ -10,10 +10,8 @@ div {
   "Status"
 }
 
-
-div h2 {
+h2 {
   grid-area: Name;
-  font-size: 3em;
   text-align: center;
 }
 
