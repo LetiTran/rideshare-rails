@@ -15,5 +15,9 @@
   <%= f.label :phone_num%>
   <%= f.text_field :phone_num %>
 
+  <%= f.label :img, "Picture" %>
+  <%= f.select :img, [['Bear', "https://placebear.com/100/100"], ['Beyonce', "http://placebeyonce.com/100-100"]] %>
+s
+
   <%= f.submit %>
 <% end %>
