@@ -59,11 +59,11 @@
         <!-- rating -->
         <% @trip = Trip.find(trip.id) %>
         <% if trip.rating == nil %>
-        <%= form_for @trip do |f| %>
+        <td><%= form_for @trip do |f| %>
         <%= f.select :rating, [ 1, 2, 3, 4, 5 ], prompt: 'Rating' %>
 
         <%= f.submit 'Rate Trip' %>
-        <% end %>
+        <% end %></td>
 
         <% else %>
         <td><%= trip.rating %></td>
