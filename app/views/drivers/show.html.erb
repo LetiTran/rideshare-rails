@@ -4,7 +4,7 @@
   <h1>Driver <%= @driver.name %></h1>
 
 
-  <section class="status">
+  <section class="action">
     <%= render partial: "driver_status" %>
   </section>
 
@@ -45,7 +45,8 @@
         <!-- passanger -->
         <% if trip.passenger_exist %>
         <% passenger = Passenger.find(trip[:passenger_id]) %>
-        <td>  <%= link_to passenger.id, passenger_path(passenger.id)%> </td>
+        <% passanger_title = "#{passenger.name} (ID: #{passenger.id})" %>
+        <td>  <%= link_to passanger_title, passenger_path(passenger.id)%> </td>
         <% else %>
         <td><%= "Passenger has been deleted." %></td>
         <% end %>
@@ -67,9 +68,8 @@
         <% end %>
 
         <!-- actions -->
-        <td><%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", trip_path(trip[:id]), method: :delete %> </td>
+        <td><%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to("Delete", trip_path(trip[:id]), method: :delete, data: {confirm: "Are you sure?"}) %> </td>
       </tr>
-
       <% end %>
     </tbody>
   </table>
