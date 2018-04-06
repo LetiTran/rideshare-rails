@@ -1,10 +1,25 @@
+
+/* ________ALL:_________ */
+
+ul li{
+  list-style: none;
+  padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
 * {
   margin: 0px;
 }
 
+/* ________MENU:_________ */
+
+
 header {
   background-color: purple;
-}
+ }
 
 #menuContainer {
   display: grid;
@@ -12,18 +27,14 @@ header {
   grid-template-rows: 75px;
   align-items: center;
   height: 75px;
-  list-style-type: none;
   margin: 0px;
-  /* grid-template-areas:
-  /* "title driver-menu passenger-menu free" */
-}
+ }
 
-#menuContainer.li {
+ #menuContainer.li {
   margin: 20px;
 }
 
 header ul {
-    list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -39,7 +50,6 @@ header li a, .dropbtn {
     color: white;
     text-align: center;
     padding: 14px 16px;
-    text-decoration: none;
 }
 
 header li a:hover, .dropdown:hover .dropbtn {
@@ -62,12 +72,13 @@ header .dropdown-content {
 header .dropdown-content a {
     color: black;
     padding: 12px 16px;
-    text-decoration: none;
     display: block;
     text-align: left;
 }
 
-header .dropdown-content a:hover {background-color: blue}
+header .dropdown-content a:hover {
+  background-color: blue
+}
 
 header  .dropdown:hover .dropdown-content {
     display: block;
@@ -77,4 +88,9 @@ h1 {
   font-size: 2vr;
   padding-left: 5px;
   padding-top: 5px;
+}
+
+header {
+  margin: auto;
+  text-align: center;
 }
