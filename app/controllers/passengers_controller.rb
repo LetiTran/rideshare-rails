@@ -8,12 +8,9 @@ class PassengersController < ApplicationController
     @passenger = Passenger.find(id)
 
     @total_paid = 0
-    @passenger.trips.each do |trip|
-      @total_paid += trip.cost
-    end
+    @passenger.trips.each {|trip| @total_paid += trip.cost}
 
     @trip = Trip.find(id)
-
   end
 
   def new
@@ -22,26 +19,17 @@ class PassengersController < ApplicationController
 
   def create
     @passenger = Passenger.new(passenger_params)
-    if @passenger.save
-      redirect_to passenger_path(@passenger[:id])
-    else
-      render :new
-    end
+    @passenger.save ? (redirect_to passenger_path(@passenger[:id])) : (render :new)
   end
 
   def edit
-    id = params[:id]
-    @passenger= Passenger.find(id)
+    @passenger= Passenger.find(params[:id])
   end
 
   def update
     @passenger = Passenger.find_by(id: params[:id])
     if !@passenger.nil?
-      if @passenger.update(passenger_params)
-        redirect_to passenger_path(@passenger.id)
-      else
-        render :edit
-      end
+       @passenger.update(passenger_params) ? (redirect_to passenger_path(@passenger.id)) : (render :edit)
     else
       redirect_to passenger_path(params[:id])
     end
@@ -50,9 +38,7 @@ class PassengersController < ApplicationController
   def destroy
     id = params[:id]
     @passenger = Passenger.find(id)
-    if @passenger
-      @passenger.destroy
-    end
+    @passenger.destroy if @passenger
     redirect_to passengers_path
   end
 
