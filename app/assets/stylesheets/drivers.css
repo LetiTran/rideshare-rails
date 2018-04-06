@@ -28,12 +28,12 @@ div h1 {
 }
 
 table {
-    border: 1px solid #F5BDB3;
+    border: 1px solid #efaac4;
     padding: 10px;
 }
 
 thead {
-  background: #F5BDB3 -webkit-gradient(linear, left top, left bottom, from(#F5E9B3), to(#F5BDB3)) no-repeat;;
+  background: #efaac4;
 }
 
 td {
@@ -46,5 +46,5 @@ a {
 }
 
 a:hover {
-  color: #F5BDB3;
+  color: #efaac4;
 }

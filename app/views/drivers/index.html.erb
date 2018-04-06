@@ -1,13 +1,22 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' />
+<%= stylesheet_link_tag "drivers" %>
 
-<h1>Rideshare Drivers</h1>
+<div>
 
-<% @drivers.each do |driver| %>
+  <h1>Rideshare Drivers</h1>
+  <table>
 
-  <ul >
-    <li>
+    <tbody>
+      <% @drivers.each do |driver| %>
 
-        <%= image_tag(driver.img, :alt => "driver image") %> <%= link_to driver.name, driver_path(driver[:id]) %>  <%= link_to "Edit", edit_driver_path(driver[:id]) %>  <%= link_to "Delete", driver_path(driver[:id]), method: :delete %></li>
-  </ul>
+      <tr >
+        <td><%= image_tag(driver.img, :alt => "driver image") %> </td>
+        <td>  <%= link_to driver.name, driver_path(driver[:id]) %>  </td>
+        <td>  <%= link_to "Edit", edit_driver_path(driver[:id]) %>  </td>
+        <td>  <%= link_to("Delete", driver_path(driver[:id]), method: :delete, method: :delete, data: {confirm: "Are you sure?"})  %></td>
+      </tr>
 
-<% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
