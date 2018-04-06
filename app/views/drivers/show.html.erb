@@ -1,52 +1,77 @@
-<h1>Driver <%= @driver.name %></h1>
+<%= stylesheet_link_tag "drivers" %>
+<div class="body">
+
+  <h1>Driver <%= @driver.name %></h1>
 
 
-<section>
-  <%= render partial: "driver_status" %>
-</section>
+  <section class="status">
+    <%= render partial: "driver_status" %>
+  </section>
 
-<section>
-  <p>Car: <%= @driver.car %></p>
-  <p>Avarage Rating: <%= @rating %></p>
-  <p>Total earnings: <%= number_to_currency((@total_earnings.to_f)/100, precision: 2)%></p>
-</section>
+  <section class="info">
+    <p>Car: <%= @driver.car %></p>
+    <p>Avarage Rating: <%= @rating %></p>
+    <p>Total earnings: <%= number_to_currency((@total_earnings.to_f)/100, precision: 2)%></p>
+  </section>
 
 
-<ul>
-  <li>TRIP ID</li>
-  <li>DATE</li>
-  <li>PASSENGER</li>
-  <li>PRICE</li>
-  <li>RATING</li>
-  <li>ACTIONS</li>
-</ul>
+  <!-- Check if driver has trips: -->
+  <% if @driver.trips.size == 0 %>
+  <p><em>This driver has no trips.</em></p>
+  <% else %>
 
-<% @driver.trips.each do |trip| %>
+  <table>
+    <thead>
+      <tr>
+        <th>TRIP ID</th>
+        <th>DATE</th>
+        <th>PASSENGER</th>
+        <th>PRICE</th>
+        <th>RATING</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
 
-  <ul >
-    <li>  <%= link_to trip.id, trip_path(trip[:id])%> <%= trip.date %>
+      <% @driver.trips.each do |trip| %>
 
-      <% if trip.passenger_exist %>
-      <% passenger = Passenger.find(trip[:passenger_id]) %>
-        <%= link_to passenger.id, passenger_path(passenger.id)%>
-      <% else %>
-        <%= "Passenger has been deleted." %>
-      <% end %>
+      <tr>
+        <!-- trip id -->
+        <td>  <%= link_to trip.id, trip_path(trip[:id])%> </td>
 
-      <%= trip.cost %>
+        <!-- trip date -->
+        <td> <%= trip.date %></td>
 
-      <% if trip.rating == nil %>
-       <%= form_for trip do |f| %>
+        <!-- passanger -->
+        <% if trip.passenger_exist %>
+        <% passenger = Passenger.find(trip[:passenger_id]) %>
+        <td>  <%= link_to passenger.id, passenger_path(passenger.id)%> </td>
+        <% else %>
+        <td><%= "Passenger has been deleted." %></td>
+        <% end %>
+
+        <!-- price -->
+        <td> <%= trip.cost %> </td>
+
+        <!-- rating -->
+        <% if trip.rating == nil %>
+        <%= form_for trip do |f| %>
         <%= f.label :rating %>
         <%= f.select :rating, [ 1, 2, 3, 4, 5 ], prompt: 'Rating' %>
 
         <%= f.submit 'Rate Trip' %>
-       <% end %>
-     <% else %>
-       <%= trip.rating %>
-     <% end %>
+        <!-- <% end %> -->
 
-       <%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", trip_path(trip[:id]), method: :delete %> </li>
-  </ul>
+        <% else %>
+        <td><%= trip.rating %></td>
+        <% end %>
 
-<% end %>
+        <!-- actions -->
+        <td><%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", trip_path(trip[:id]), method: :delete %> </td>
+      </tr>
+
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>
