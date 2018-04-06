@@ -11,7 +11,7 @@ a {
 }
 
 * {
-  margin: 0px;
+  margin: 0;
   font-family: 'Poppins';
 }
 
@@ -21,21 +21,10 @@ a {
 
 header {
   background-color: #efaac4;
+  margin: auto;
+  text-align: center;
+  font-family: 'Poppins';
  }
-
-
-#menuContainer {
-  display: grid;
-  grid-template-columns: 200px 150px 150px 1fr;
-  grid-template-rows: 75px;
-  align-items: center;
-  height: 75px;
-  margin: 0px;
- }
-
- #menuContainer.li {
-  margin: 20px;
-}
 
 header ul {
     margin: 0;
@@ -94,8 +83,12 @@ header h1 {
   font-family: 'Kirang Haerang';
 }
 
-header {
-  margin: auto;
-  text-align: center;
-  font-family: 'Poppins';
+/* ________MAIN:_________ */
+
+h2 {
+  margin-left: 10px;
+  font-size: 2em;
+}
+form {
+  margin-left: 10px;
 }
