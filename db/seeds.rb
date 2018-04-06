@@ -10,9 +10,10 @@ CSV.foreach(DRIVER_FILE, :headers => true) do |row|
   driver.name = row['name']
   driver.vin = row['vin']
   driver.car = "A car"
+  driver.img = "https://placebear.com/100/100"
   number = rand(0..1)
   if number == 1
-    driver.status = true 
+    driver.status = true
   else
     driver.status = false
   end
@@ -39,6 +40,7 @@ CSV.foreach(PASSENGER_FILE, :headers => true) do |row|
   passenger.id = row['id']
   passenger.name = row['name']
   passenger.phone_num = row['phone_num']
+  passenger.img = "http://placebeyonce.com/100-100"
   successful = passenger.save
   if !successful
     passenger_failures << passenger
