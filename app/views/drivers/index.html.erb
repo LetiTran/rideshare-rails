@@ -4,9 +4,9 @@
 
   <ul >
     <li>
-      <% unless driver.img.blank? %>
+      
         <%= image_tag(driver.img, :alt => "driver image") %>
-      <% end %>
+
 
         <%= link_to driver.name, driver_path(driver[:id]) %>  <%= link_to "Edit", edit_driver_path(driver[:id]) %>  <%= link_to "Delete", driver_path(driver[:id]), method: :delete %></li>
   </ul>
