@@ -1,3 +1,5 @@
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet' />
+
 <h1>Rideshare Trips</h1>
 
 <ul>
@@ -9,7 +11,7 @@
 
 
 <% @trips.each do |trip| %>
-  
+
   <ul >
     <li>  <%= link_to trip.id, trip_path(trip[:id])%>
       <!-- use method from trip model to check to see if the driver has not been deleted -->
