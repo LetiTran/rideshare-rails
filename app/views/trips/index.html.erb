@@ -9,9 +9,7 @@
 
 
 <% @trips.each do |trip| %>
-  <% passenger = @passengers.find(trip.passenger_id) %>
-
-
+  
   <ul >
     <li>  <%= link_to trip.id, trip_path(trip[:id])%>
       <!-- use method from trip model to check to see if the driver has not been deleted -->

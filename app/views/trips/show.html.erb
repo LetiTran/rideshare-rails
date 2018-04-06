@@ -7,7 +7,16 @@
   <p>Passenger: <%= @passenger %></p>
   <p>Date: <%= @trip.date %></p>
   <p>Cost: <%= number_to_currency((@trip.cost.to_f)/100, precision: 2)%> </p>
-  <p>Rating: <%= @trip.rating %></p>
+  <p>   <% if @trip.rating == nil %>
+     <%= form_for @trip do |f| %>
+      <%= f.select :rating, [ 1, 2, 3, 4, 5 ], prompt: 'Rating' %>
+
+      <%= f.submit 'Rate Trip' %>
+     <% end %>
+   <% else %>
+     <%= @trip.rating %>
+   <% end %>
+ </p>
 </section>
 
 <ul >

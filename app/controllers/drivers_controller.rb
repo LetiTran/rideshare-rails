@@ -12,15 +12,26 @@ class DriversController < ApplicationController
     number_of_ratings = 0
     @rating = 0
     Trip.where(driver_id: @driver.id).each do |trip|
-      @rating += trip.rating
-      number_of_ratings += 1
+      if trip.rating == nil
+        @rating += 0
+      else
+        @rating += trip.rating
+        number_of_ratings += 1
+      end
     end
 
     @rating == 0 ? "Driver has no trips" : @rating = @rating/number_of_ratings
 
     # Calculate total earnings:
     @total_earnings = 0
-    Trip.where(driver_id: @driver.id).each {|trip| @total_earnings += trip.cost}
+
+    Trip.where(driver_id: @driver.id).each do |trip|
+      if trip.cost == nil
+        cost = 0
+      else
+        @total_earnings += trip.cost
+      end
+    end
   end
 
   def new
@@ -64,6 +75,7 @@ class DriversController < ApplicationController
   end
 
   def update_status
+  
   end
 
   private

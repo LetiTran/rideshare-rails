@@ -2,6 +2,16 @@ class Trip < ApplicationRecord
   belongs_to :driver
   belongs_to :passenger
 
+  def trip_exist(id)
+    # this checks to see if the trip has been deleted
+    trip_id = id
+    if Trip.exists?(id: trip_id)
+      return true
+    else
+      return false
+    end
+  end
+
   def driver_exist
     # this checks to see if the driver has been deleted
     driver_id = self.driver_id

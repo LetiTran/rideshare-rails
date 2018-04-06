@@ -23,9 +23,30 @@
 
 <% @driver.trips.each do |trip| %>
 
-<% passenger = trip.passenger %>
   <ul >
-    <li>  <%= link_to trip.id, trip_path(trip[:id])%> <%= trip.date %> <%= link_to passenger.id, passenger_path(passenger[:id])%> <%= trip.cost %> <%= trip.rating %> <%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", trip_path(trip[:id]), method: :delete %> </li>
+    <li>  <%= link_to trip.id, trip_path(trip[:id])%> <%= trip.date %>
+
+      <% if trip.passenger_exist %>
+      <% passenger = Passenger.find(trip[:passenger_id]) %>
+        <%= link_to passenger.id, passenger_path(passenger.id)%>
+      <% else %>
+        <%= "Passenger has been deleted." %>
+      <% end %>
+
+      <%= trip.cost %>
+
+      <% if trip.rating == nil %>
+       <%= form_for trip do |f| %>
+        <%= f.label :rating %>
+        <%= f.select :rating, [ 1, 2, 3, 4, 5 ], prompt: 'Rating' %>
+
+        <%= f.submit 'Rate Trip' %>
+       <% end %>
+     <% else %>
+       <%= trip.rating %>
+     <% end %>
+
+       <%= link_to "Edit", edit_trip_path(trip[:id]) %>  <%= link_to "Delete", trip_path(trip[:id]), method: :delete %> </li>
   </ul>
 
 <% end %>

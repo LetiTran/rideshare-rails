@@ -37,8 +37,7 @@
     <% @trip = Trip.find(trip.id) %>
      <% if trip.rating == nil %>
       <%= form_for @trip do |f| %>
-       <%= f.label :rating %>
-       <%= f.text_field :rating, size: 6 %>
+       <%= f.select :rating, [ 1, 2, 3, 4, 5 ], prompt: 'Rating' %>
 
        <%= f.submit 'Rate Trip' %>
       <% end %>

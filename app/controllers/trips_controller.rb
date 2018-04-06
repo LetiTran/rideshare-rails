@@ -6,25 +6,30 @@ class TripsController < ApplicationController
   end
 
   def show
+
     id = params[:id]
-    @trip = Trip.find(id)
+    if Trip.exists?(id)
+      @trip = Trip.find(id)
 
-    if @trip.driver_exist
-      @driver = Driver.find(@trip[:driver_id]).name
-    else
-      @driver = "Driver has been deleted."
-    end
+      if @trip.driver_exist
+        @driver = Driver.find(@trip[:driver_id]).name
+      else
+        @driver = "Driver has been deleted."
+      end
 
-    if @trip.passenger_exist
-      @passenger = Passenger.find(@trip[:passenger_id]).name
+      if @trip.passenger_exist
+        @passenger = Passenger.find(@trip[:passenger_id]).name
+      else
+        @passenger = "Passenger has been deleted."
+      end
     else
-      @passenger = "Passenger has been deleted."
+      redirect_to user_interfaces_path
     end
   end
 
   def new
     passenger = Passenger.find(params[:passenger_id])
-    driver = Driver.find_by(status: true)
+    driver = Driver.order("RANDOM()").find_by(status: true)
     date = Date.today
     cost = rand(1111..9999)
       @trip = Trip.new(passenger: passenger, driver: driver, date: date, cost: cost)
@@ -65,7 +70,7 @@ class TripsController < ApplicationController
     if @trip
       @trip.destroy
     end
-    redirect_to trips_path
+    redirect_back(fallback_location: user_interfaces_path)
   end
 
   private
