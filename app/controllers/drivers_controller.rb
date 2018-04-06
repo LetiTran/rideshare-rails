@@ -25,13 +25,8 @@ class DriversController < ApplicationController
     # Calculate total earnings:
     @total_earnings = 0
 
-    Trip.where(driver_id: @driver.id).each do |trip|
-      if trip.cost == nil
-        cost = 0
-      else
-        @total_earnings += trip.cost
-      end
-    end
+    Trip.where(driver_id: @driver.id).each {|trip| trip.cost == nil ? cost = 0 : @total_earnings += trip.cost }
+    # TODO : Do we need this 'cost = 0' ?
   end
 
   def new
@@ -40,42 +35,30 @@ class DriversController < ApplicationController
 
   def create
     @driver = Driver.new(driver_params)
-    if @driver.save
-      redirect_to driver_path(@driver[:id])
-    else
-      render :new
-    end
+    @driver.save ? (redirect_to driver_path(@driver[:id])) : (render :new)
   end
 
   def edit
-    id = params[:id]
-    @driver = Driver.find(id)
+    @driver = Driver.find(params[:id])
   end
 
   def update
     @driver = Driver.find_by(id: params[:id])
     if !@driver.nil?
-      if @driver.update(driver_params)
-        redirect_to driver_path(@driver.id)
-      else
-        render :edit
-      end
+      @driver.update(driver_params) ? (redirect_to driver_path(@driver.id)) : (render :edit)
     else
       redirect_to drivers_path
     end
   end
 
   def destroy
-    id = params[:id]
-    @driver = Driver.find(id)
-    if @driver
-      @driver.destroy
-    end
+    @driver = Driver.find(params[:id])
+    @driver.destroy if @driver
     redirect_to drivers_path
   end
 
   def update_status
-  
+
   end
 
   private

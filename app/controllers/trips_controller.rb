@@ -6,22 +6,16 @@ class TripsController < ApplicationController
   end
 
   def show
-
     id = params[:id]
     if Trip.exists?(id)
       @trip = Trip.find(id)
 
-      if @trip.driver_exist
-        @driver = Driver.find(@trip[:driver_id]).name
-      else
-        @driver = "Driver has been deleted."
-      end
+      # Can find driver?
+      @trip.driver_exist ? @driver = Driver.find(@trip[:driver_id]).name : @driver = "Driver has been deleted."
 
-      if @trip.passenger_exist
-        @passenger = Passenger.find(@trip[:passenger_id]).name
-      else
-        @passenger = "Passenger has been deleted."
-      end
+      # Can fin passanger?
+      @trip.passenger_exist ? @passenger = Passenger.find(@trip[:passenger_id]).name : @passenger = "Passenger has been deleted."
+
     else
       redirect_to user_interfaces_path
     end
@@ -32,44 +26,31 @@ class TripsController < ApplicationController
     driver = Driver.order("RANDOM()").find_by(status: true)
     date = Date.today
     cost = rand(1111..9999)
-      @trip = Trip.new(passenger: passenger, driver: driver, date: date, cost: cost)
+    @trip = Trip.new(passenger: passenger, driver: driver, date: date, cost: cost)
 
     self.create
   end
 
   def create
-
-    if @trip.save
-      redirect_to passenger_path(@trip[:passenger_id])
-    else
-      render :new
-    end
+    @trip.save ? (redirect_to passenger_path(@trip[:passenger_id])) : (render :new)
   end
 
   def edit
-    id = params[:id]
-    @trip = Trip.find(id)
+    @trip = Trip.find(params[:id])
   end
 
   def update
     @trip = Trip.find_by(id: params[:id])
     if !@trip.nil?
-      if @trip.update(trip_params)
-        redirect_to trip_path(@trip.id)
-      else
-        render :edit
-      end
+      @trip.update(trip_params) ? (redirect_to trip_path(@trip.id)): (render :edit)
     else
       redirect_to trips_path
     end
   end
 
   def destroy
-    id = params[:id]
-    @trip = Trip.find(id)
-    if @trip
-      @trip.destroy
-    end
+    @trip = Trip.find(params[:id])
+    @trip.destroy if @trip
     redirect_back(fallback_location: user_interfaces_path)
   end
 
